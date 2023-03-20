@@ -2,19 +2,20 @@ export function IconUser() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='20'
-      height='20'
-      fill='none'
+      className='icon icon-tabler icon-tabler-user-circle'
+      width={24}
+      height={24}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
       stroke='currentColor'
+      fill='none'
       strokeLinecap='round'
       strokeLinejoin='round'
-      strokeWidth='2'
-      className='icon icon-tabler icon-tabler-user-circle'
-      viewBox='0 0 24 24'
     >
-      <path stroke='none' d='M0 0h24v24H0z' />
-      <path d='M3 12a9 9 0 1018 0 9 9 0 10-18 0' />
-      <path d='M9 10a3 3 0 106 0 3 3 0 10-6 0M6.168 18.849A4 4 0 0110 16h4a4 4 0 013.834 2.855' />
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0' />
+      <path d='M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0' />
+      <path d='M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855' />
     </svg>
   )
 }
@@ -23,8 +24,8 @@ export function IconMail() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='20'
-      height='20'
+      width='24'
+      height='24'
       fill='none'
       stroke='currentColor'
       strokeLinecap='round'
@@ -44,8 +45,8 @@ export function IconPass() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='20'
-      height='20'
+      width='24'
+      height='24'
       fill='none'
       stroke='currentColor'
       strokeLinecap='round'
@@ -95,6 +96,146 @@ export function IconGoogle() {
         fill='currentColor'
         d='M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z'
       />
+    </svg>
+  )
+}
+export function IconMoon() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='25'
+      height='30'
+      fill='none'
+      stroke='#2c3e50'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='1.5'
+      className='icon icon-tabler icon-tabler-moon'
+      viewBox='0 0 24 24'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' />
+      <path d='M12 3h.393a7.5 7.5 0 007.92 12.446A9 9 0 1112 2.992z' />
+    </svg>
+  )
+}
+
+export function IconSun() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='25'
+      height='30'
+      fill='none'
+      stroke='#fff'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='1.5'
+      className='icon icon-tabler icon-tabler-sun'
+      viewBox='0 0 24 24'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' />
+      <circle cx='12' cy='12' r='4' />
+      <path d='M3 12h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7' />
+    </svg>
+  )
+}
+export function IconOut() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 256 256'
+      width='24'
+      height='24'
+      className='dark:fill-black'
+    >
+      <path fill='none' d='M0 0H256V256H0z' />
+      <path
+        fill='none'
+        stroke='#fff'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='16'
+        d='M174.011 86L216 128 174.011 170'
+      />
+      <path
+        fill='none'
+        stroke='#fff'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='16'
+        d='M104 128L215.971 128'
+      />
+      <path
+        fill='none'
+        stroke='#fff'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='16'
+        d='M104 216H48a8 8 0 01-8-8V48a8 8 0 018-8h56'
+      />
+    </svg>
+  )
+}
+
+export function IconGame() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='25'
+      height='24'
+      fill='none'
+      stroke='currentColor'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth='2'
+      className='icon icon-tabler icon-tabler-device-gamepad-2'
+      viewBox='0 0 24 24'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' />
+      <path d='M12 5h3.5a5 5 0 010 10H10l-4.015 4.227a2.3 2.3 0 01-3.923-2.035l1.634-8.173A5 5 0 018.6 5H12z' />
+      <path d='M14 15l4.07 4.284a2.3 2.3 0 003.925-2.023l-1.6-8.232M8 9v2M7 10h2M14 10h2' />
+    </svg>
+  )
+}
+export function IconGrid() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-layout-grid'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      stroke-width='1.5'
+      stroke='currentColor'
+      fill='none'
+      stroke-linecap='round'
+      stroke-linejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z' />
+      <path d='M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z' />
+      <path d='M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z' />
+      <path d='M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z' />
+    </svg>
+  )
+}
+export function IconRow() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-layout-rows'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      stroke-width='1.5'
+      stroke='currentColor'
+      fill='none'
+      stroke-linecap='round'
+      stroke-linejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z' />
+      <path d='M4 12l16 0' />
     </svg>
   )
 }

@@ -1,28 +1,6 @@
 import Head from 'next/head'
-import { NextPageContext } from 'next'
-import { getSession, signOut } from 'next-auth/react'
-import useCurrentUser from '@/components/useCurrentUser'
-
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context)
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    }
-  }
-
-  return {
-    props: {}
-  }
-}
 
 export default function Home() {
-  const query = useCurrentUser()
-  console.log(query.data)
   return (
     <>
       <Head>
@@ -32,10 +10,12 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <h1 className='text-white'>Hello World</h1>
-        <button className='text-white' onClick={() => signOut()}>
-          Out{' '}
-        </button>
+        <section className='body-font mt-32 text-gray-400'>
+          <div>
+            <h1>Hello World</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </section>
       </main>
     </>
   )

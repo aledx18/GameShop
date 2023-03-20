@@ -59,12 +59,47 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// model Movie {
-//   id           String @id @default(auto()) @map("_id") @db.ObjectId
-//   title        String
-//   description  String
-//   videoUrl     String
-//   thumbnailUrl String
-//   genre        String
-//   duration     String
-// }
+model Game {
+  id                String            @id @default(auto()) @map("_id") @db.ObjectId
+  slug              String
+  name              String
+  price             Float
+  description       String
+  stores            Store[]
+  released          String
+  background_image  String
+  rating            Float
+  metacritic        Int
+  updated           String
+  short_screenshots ShortScreenshot[]
+  parent_platforms  ParentPlatform[]
+  genres            Genre[]
+}
+
+model Store {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  games  Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  gameId String @db.ObjectId
+}
+
+model ParentPlatform {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  gameId String @db.ObjectId
+  name   String
+  games  Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
+
+model Genre {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  gameId String @db.ObjectId
+  name   String
+  games  Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
+
+model ShortScreenshot {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  gameId String @db.ObjectId
+  image  String
+  games  Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}

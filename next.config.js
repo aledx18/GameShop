@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  images: {
+    domains: ['tailwindui.com', 'media.rawg.io', 'api.lorem.space']
+  }
 }
 
 module.exports = nextConfig
