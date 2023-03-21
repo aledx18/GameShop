@@ -10,7 +10,15 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    fontFamily: {
+      sans: ['poppins', 'sans-serif'],
+      roboto: ['Roboto', 'sans-serif']
+    },
     extend: {
+      fontFamily: {
+        // sans: ['Roboto', ' sans-serif'],
+        sans: ['Poppins', 'sans-serif']
+      },
       colors: {
         blackOne: '#121212',
         blackFondo: '#191a1d',

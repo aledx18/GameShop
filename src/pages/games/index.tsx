@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function Shop() {
+export default function Games() {
   const { data } = useGetAllGames()
   const [view, setView] = useState(false)
 
@@ -143,9 +143,9 @@ export default function Shop() {
                             xmlns='http://www.w3.org/2000/svg'
                           >
                             <path
-                              stroke-linecap='round'
-                              stroke-linejoin='round'
-                              stroke-width='2'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                              strokeWidth='2'
                               d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
                             />
                           </svg>
@@ -176,9 +176,11 @@ export default function Shop() {
                               className='flex h-[300px] w-full items-end overflow-hidden rounded-lg bg-cover bg-center object-cover object-center shadow-xl'
                             >
                               <div className='w-full overflow-hidden rounded-b-lg bg-grisTwo/30 backdrop-blur-md '>
-                                <h2 className='text-md p-2 font-semibold text-white '>
-                                  {game.name}
-                                </h2>
+                                <Link href={`/games/${game.id}`}>
+                                  <h2 className='text-md p-2 font-semibold text-white '>
+                                    {game.name}
+                                  </h2>
+                                </Link>
                                 <p className='mt-2 text-lg uppercase tracking-wider text-blue-500'>
                                   Website
                                 </p>
@@ -200,9 +202,11 @@ export default function Shop() {
                                   alt={game.slug}
                                   loading='lazy'
                                 />
-                                <h2 className='text-md px-8 font-semibold text-white '>
-                                  {game.name}
-                                </h2>
+                                <Link href={`/games/${game.id}`}>
+                                  <h2 className='text-md px-8 font-semibold text-white '>
+                                    {game.name}
+                                  </h2>
+                                </Link>
                               </div>
                               <div className='px-6'>
                                 <h3 className='font-bold text-white'>
@@ -228,9 +232,9 @@ export default function Shop() {
                         fill='currentColor'
                       >
                         <path
-                          fill-rule='evenodd'
+                          fillRule='evenodd'
                           d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z'
-                          clip-rule='evenodd'
+                          clipRule='evenodd'
                         />
                       </svg>
                     </a>
@@ -281,9 +285,9 @@ export default function Shop() {
                         fill='currentColor'
                       >
                         <path
-                          fill-rule='evenodd'
+                          fillRule='evenodd'
                           d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                          clip-rule='evenodd'
+                          clipRule='evenodd'
                         />
                       </svg>
                     </a>
@@ -297,3 +301,10 @@ export default function Shop() {
     </>
   )
 }
+
+// const { data } = useGetAllGames()
+// export async function getServerSideProps() {
+//   const { data } = useGetAllGames()
+
+//   return { props: { data } }
+// }

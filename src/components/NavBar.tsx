@@ -15,20 +15,12 @@ export default function NavBar() {
       }  `}
     >
       <nav className='flex items-center justify-between' aria-label='Global'>
-        <div className='flex lg:flex-1'>
+        <div className='flex gap-10 lg:flex-1'>
           <Link href='/' className='-m-1.5 p-1.5'>
             <span className='sr-only'>Your Company</span>
             <IconGame />
           </Link>
-        </div>
-
-        <div className='flex lg:hidden'>
-          <button
-            type='button'
-            className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
-          >
-            <span className='sr-only'>Open main menu</span>
-          </button>
+          <Link href='/games'>Shop</Link>
         </div>
 
         <div className='flex items-center gap-6 lg:text-right'>

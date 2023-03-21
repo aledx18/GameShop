@@ -4,6 +4,7 @@ import { UrlAxios } from './urlAxios'
 
 async function fetchAll(): Promise<Game[]> {
   const { data } = await UrlAxios.get<Game[]>('/getAll')
+
   return data
 }
 export default function useGetAllGames() {
