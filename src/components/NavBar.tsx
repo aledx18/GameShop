@@ -19,7 +19,7 @@ export default function NavBar() {
 
         <div className='flex items-center gap-6 lg:text-right'>
           <Toggler />
-          <Link href='/login'>
+          <Link href='/'>
             <IconUser />
           </Link>
           <IconOut />

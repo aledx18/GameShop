@@ -1,5 +1,4 @@
 /* eslint-disable multiline-ternary */
-import axios from 'axios'
 import {
   IconMail,
   IconPass,
@@ -11,6 +10,7 @@ import { useCallback, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 type Inputs = {
   name: string
@@ -29,8 +29,6 @@ export default function Login() {
 
   const router = useRouter()
 
-  console.log(errors)
-
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) =>
       currentVariant === 'login' ? 'signup' : 'login'
@@ -46,43 +44,42 @@ export default function Login() {
     signIn('google', { callbackUrl: '/' })
   }
 
-  // const signup = useCallback(async (name : string, email: string, password: string) => {
-  //   try {
-  //     await axios.post('/api/register', {
-  //       name,
-  //       password,
-  //       email
-  //     })
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }, [email, name, password])
+  const signup = useCallback(
+    async (name: string, email: string, password: string) => {
+      try {
+        await axios.post('/api/register', {
+          name,
+          password,
+          email
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    []
+  )
 
   const login = useCallback(async (email: string, password: string) => {
-    console.log(email, password)
-
-    // try {
-    //   await signIn('credentials', {
-    //     email,
-    //     password,
-    //     redirect: false,
-    //     callbackUrl: '/'
-    //   })
-    //   router.push('/')
-    // } catch (error) {
-    //   console.log(error, 'dasd')
-    // }
+    try {
+      await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: '/'
+      })
+      router.push('/')
+    } catch (error) {
+      console.log(error, 'dasd')
+    }
   }, [])
 
   function onSubmit(data: Inputs) {
     console.log(data)
 
     if (variant === 'login') {
-      console.log('login')
-      //  login(data.email, data.password)
+      login(data.email, data.password)
     } else {
-      console.log('signup')
-      // signup(data.name, data.email, data.password)
+      signup(data.name, data.email, data.password)
     }
   }
   // bg-[#1b1b1d]
