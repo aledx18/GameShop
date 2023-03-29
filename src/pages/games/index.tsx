@@ -1,14 +1,37 @@
 /* eslint-disable multiline-ternary */
 import useGetAllGames from '@/components/getAllgames'
-import { IconGrid, IconRow } from '@/components/icons/icons'
+import {
+  IconAndroid,
+  IconGrid,
+  IconImg,
+  IconPlaySta,
+  IconRow,
+  IconSteam,
+  IconWindow,
+  IconXbox
+} from '@/components/icons/icons'
+import { Game } from '@/components/interfaces'
+import Search from '@/components/Search'
+import useStore from '@/components/store/zustand'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
 export default function Games() {
-  const { data } = useGetAllGames()
+  const { data, isLoading } = useGetAllGames()
+
+  const { games } = useStore()
   const [view, setView] = useState(false)
+  const skeleton = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
+
+  const platf = [
+    { id: 0, name: <IconSteam /> },
+    { id: 1, name: <IconWindow /> },
+    { id: 2, name: <IconPlaySta /> },
+    { id: 3, name: <IconXbox /> },
+    { id: 4, name: <IconAndroid /> }
+  ]
 
   return (
     <>
@@ -79,7 +102,7 @@ export default function Games() {
               {/* <!-- cantidad de juegos --> */}
               <div className='py-2'>
                 <p className='text-md font-semibold text-black dark:text-white'>
-                  {data?.length} Games
+                  {isLoading ? '∞ ' : data?.length} Games 🎮
                 </p>
               </div>
               {/* <!-- botones view --> */}
@@ -107,7 +130,7 @@ export default function Games() {
               </div>
             </div>
 
-            <section aria-labelledby='products-heading' className='pt-2 pb-24'>
+            <section className='pt-2 pb-24'>
               <h2 id='products-heading' className='sr-only'>
                 Products
               </h2>
@@ -123,101 +146,107 @@ export default function Games() {
                 {/* grid */}
                 <div className='lg:col-span-5'>
                   {/* otros filtros */}
-                  <div className=' flex justify-between rounded-md bg-blackOne py-4 dark:bg-blackOne'>
-                    <div className='px-2'>dasdasdasda</div>
-                    <div className='px-4'>
-                      <label
-                        htmlFor='search'
-                        className='sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                      >
-                        Search
-                      </label>
-                      <div className='relative'>
-                        <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-                          <svg
-                            aria-hidden='true'
-                            className='h-5 w-5 text-gray-500 dark:text-gray-400'
-                            fill='none'
-                            stroke='currentColor'
-                            viewBox='0 0 24 24'
-                            xmlns='http://www.w3.org/2000/svg'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              strokeWidth='2'
-                              d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-                            />
-                          </svg>
-                        </div>
-                        <input
-                          type='search'
-                          id='search'
-                          className='block w-full appearance-none rounded-lg bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-grisClaro  dark:border-gray-600 dark:bg-grisTwo dark:text-white dark:placeholder-gray-200'
-                          placeholder='Search'
-                        />
-                      </div>
+                  <div className=' flex justify-center rounded-md bg-blackOne py-4 dark:bg-blackOne'>
+                    <div className='m-0 flex items-center justify-center gap-2 pl-4'>
+                      {platf.map((plat) => (
+                        <button
+                          key={plat.id}
+                          className='flex items-center justify-center rounded-md bg-grisTwo p-2'
+                        >
+                          {plat.name}
+                        </button>
+                      ))}
                     </div>
+                    <Search />
                   </div>
                   {/* Games grid */}
 
                   <div className='container mx-auto mt-2'>
-                    <div className='flex flex-wrap'>
-                      {data?.slice(0, 16).map((game) =>
-                        view ? (
+                    {isLoading && !view ? (
+                      <div className='flex flex-wrap'>
+                        {skeleton.map((ske) => (
                           <div
-                            key={game.id}
-                            className='w-full p-1 md:w-1/3 lg:w-1/3'
-                          >
-                            <div
-                              style={{
-                                backgroundImage: `url(${game.background_image})`
-                              }}
-                              className='flex h-[300px] w-full items-end overflow-hidden rounded-lg bg-cover bg-center object-cover object-center shadow-xl'
-                            >
-                              <div className='w-full overflow-hidden rounded-b-lg bg-grisTwo/30 backdrop-blur-md '>
-                                <Link href={`/games/${game.id}`}>
-                                  <h2 className='text-md p-2 font-semibold text-white '>
-                                    {game.name}
-                                  </h2>
-                                </Link>
-                                <p className='mt-2 text-lg uppercase tracking-wider text-blue-500'>
-                                  Website
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div
-                            key={game.id}
+                            key={ske.id}
                             className='my-2 w-full rounded-md bg-grisOne lg:w-full'
                           >
                             <div className='flex items-center justify-between'>
                               <div className='flex items-center rounded-md'>
-                                <Image
-                                  className='rounded-md'
-                                  src={game.background_image}
-                                  width={150}
-                                  height={100}
-                                  alt={game.slug}
-                                  loading='lazy'
-                                />
-                                <Link href={`/games/${game.id}`}>
-                                  <h2 className='text-md px-8 font-semibold text-white '>
-                                    {game.name}
-                                  </h2>
-                                </Link>
+                                <div
+                                  role='status'
+                                  className='animate-pulse py-4 px-8 md:flex md:items-center md:space-y-0 md:space-x-8'
+                                >
+                                  <IconImg />
+                                </div>
+
+                                <h2 className='text-md animate-pulse px-16 font-semibold text-white'>
+                                  <div className='h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-700' />
+                                </h2>
                               </div>
                               <div className='px-6'>
                                 <h3 className='font-bold text-white'>
-                                  $ {game.price}
+                                  <div className='h-2.5 w-48 rounded-full bg-gray-200 dark:bg-gray-700' />
                                 </h3>
                               </div>
                             </div>
                           </div>
-                        )
-                      )}
-                    </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className='flex flex-wrap'>
+                        {games?.slice(0, 19).map((game: Game) =>
+                          view ? (
+                            <div
+                              key={game.id}
+                              className='w-full p-1 md:w-1/3 lg:w-1/3'
+                            >
+                              <div
+                                style={{
+                                  backgroundImage: `url(${game.background_image})`
+                                }}
+                                className='flex h-[300px] w-full items-end overflow-hidden rounded-lg bg-cover bg-center object-cover object-center shadow-xl'
+                              >
+                                <div className='w-full overflow-hidden rounded-b-lg bg-grisTwo/30 backdrop-blur-md '>
+                                  <Link href={`/games/${game.id}`}>
+                                    <h2 className='text-md p-2 font-semibold text-white '>
+                                      {game.name}
+                                    </h2>
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              key={game.id}
+                              className='my-2 w-full rounded-md bg-grisOne lg:w-full'
+                            >
+                              <div className='flex items-center justify-between'>
+                                <div className='flex h-20 items-center rounded-md'>
+                                  <Image
+                                    className='min-h-36 max-h-36 w-auto rounded-md pl-1'
+                                    src={game.background_image}
+                                    width={100}
+                                    height={100}
+                                    alt={game.slug}
+                                    quality={60}
+                                    loading='lazy'
+                                  />
+                                  <Link href={`/games/${game.id}`}>
+                                    <h2 className='text-md px-8 font-semibold text-white '>
+                                      {game.name}
+                                    </h2>
+                                  </Link>
+                                </div>
+                                <div className='px-6'>
+                                  <h3 className='font-bold text-white'>
+                                    $ {game.price}
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )}
                   </div>
                   {/* <!-- pagination --> */}
                   <div className='flex justify-center py-10'>

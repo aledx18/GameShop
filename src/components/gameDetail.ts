@@ -1,17 +1,23 @@
-import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { Game } from './interfaces'
+import { Add, Game, Video } from './interfaces'
 
-export default async function fetchAll(id: string) {
+export async function fetchDetail(id: string) {
   const { data } = await axios.get<Game>(
     `http://localhost:3000/api/getByID?id=${id}`
   )
-  console.log(data)
   return data
 }
-// export default async function useGetDetailGame(id: string) {
-//   const query = useQuery(['GameId'], await fetchAll(id), {
-//     refetchOnWindowFocus: false
-//   })
-//   return query
-// }
+
+export async function fetchDetailMovie(slug: string) {
+  const { data } = await axios.get<Video>(
+    `https://api.rawg.io/api/games/${slug}/movies?key=${process.env.NEXT_PUBLIC_KEY}`
+  )
+  return data
+}
+
+export async function fetchDetailAdditions(slug: string) {
+  const { data } = await axios.get<Add>(
+    `https://api.rawg.io/api/games/${slug}/additions?key=${process.env.NEXT_PUBLIC_KEY}`
+  )
+  return data
+}

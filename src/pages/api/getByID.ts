@@ -31,7 +31,8 @@ export default async function handler(
 
       res.status(200).json(gameById)
     }
+    res.status(400)
   } catch (error) {
-    res.status(500).json({ error })
+    res.status(400)
   }
 }

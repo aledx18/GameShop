@@ -239,3 +239,237 @@ export function IconRow() {
     </svg>
   )
 }
+export function IconImg() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-photo'
+      width={51}
+      height={50}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M15 8h.01' />
+      <path d='M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z' />
+      <path d='M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5' />
+      <path d='M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3' />
+    </svg>
+  )
+}
+interface IconDotsProps {
+  w: string
+  h: string
+}
+export function IconDots(props: IconDotsProps) {
+  const { w, h } = props
+  return (
+    <svg
+      width={w}
+      height={h}
+      viewBox='0 0 120 30'
+      xmlns='http://www.w3.org/2000/svg'
+      fill='#fff'
+    >
+      <circle cx='15' cy='15' r='15'>
+        <animate
+          attributeName='r'
+          from='15'
+          to='15'
+          begin='0s'
+          dur='0.8s'
+          values='15;9;15'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+        <animate
+          attributeName='fillOpacity'
+          from='1'
+          to='1'
+          begin='0s'
+          dur='0.8s'
+          values='1;.5;1'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+      </circle>
+      <circle cx='60' cy='15' r='9' fillOpacity='0.3'>
+        <animate
+          attributeName='r'
+          from='9'
+          to='9'
+          begin='0s'
+          dur='0.8s'
+          values='9;15;9'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+        <animate
+          attributeName='fillOpacity'
+          from='0.5'
+          to='0.5'
+          begin='0s'
+          dur='0.8s'
+          values='.5;1;.5'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+      </circle>
+      <circle cx='105' cy='15' r='15'>
+        <animate
+          attributeName='r'
+          from='15'
+          to='15'
+          begin='0s'
+          dur='0.8s'
+          values='15;9;15'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+        <animate
+          attributeName='fillOpacity'
+          from='1'
+          to='1'
+          begin='0s'
+          dur='0.8s'
+          values='1;.5;1'
+          calcMode='linear'
+          repeatCount='indefinite'
+        />
+      </circle>
+    </svg>
+  )
+}
+
+export function IconSteam() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-brand-steam'
+      width={55}
+      height={35}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M16.5 5a4.5 4.5 0 1 1 -.653 8.953l-4.347 3.009l0 .038a3 3 0 0 1 -2.824 3l-.176 0a3 3 0 0 1 -2.94 -2.402l-2.56 -1.098v-3.5l3.51 1.755a2.989 2.989 0 0 1 2.834 -.635l2.727 -3.818a4.5 4.5 0 0 1 4.429 -5.302z' />
+      <circle cx='16.5' cy='9.5' r={1} fill='currentColor' />
+    </svg>
+  )
+}
+
+export function IconAndroid() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-brand-android'
+      width={55}
+      height={35}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M4 10l0 6' />
+      <path d='M20 10l0 6' />
+      <path d='M7 9h10v8a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-8a5 5 0 0 1 10 0' />
+      <path d='M8 3l1 2' />
+      <path d='M16 3l-1 2' />
+      <path d='M9 18l0 3' />
+      <path d='M15 18l0 3' />
+    </svg>
+  )
+}
+
+export function IconIos() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-pizza'
+      width={55}
+      height={35}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M12 21.5c-3.04 0 -5.952 -.714 -8.5 -1.983l8.5 -16.517l8.5 16.517a19.09 19.09 0 0 1 -8.5 1.983z' />
+      <path d='M5.38 15.866a14.94 14.94 0 0 0 6.815 1.634a14.944 14.944 0 0 0 6.502 -1.479' />
+      <path d='M13 11.01v-.01' />
+      <path d='M11 14v-.01' />
+    </svg>
+  )
+}
+
+export function IconXbox() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-brand-xbox'
+      width={55}
+      height={35}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0' />
+      <path d='M6.5 5c7.72 2.266 10.037 7.597 12.5 12.5' />
+      <path d='M17.5 5c-7.72 2.266 -10.037 7.597 -12.5 12.5' />
+    </svg>
+  )
+}
+
+export function IconWindow() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-brand-windows'
+      width={55}
+      height={35}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M17.8 20l-12 -1.5c-1 -.1 -1.8 -.9 -1.8 -1.9v-9.2c0 -1 .8 -1.8 1.8 -1.9l12 -1.5c1.2 -.1 2.2 .8 2.2 1.9v12.1c0 1.2 -1.1 2.1 -2.2 1.9z' />
+      <path d='M12 5l0 14' />
+      <path d='M4 12l16 0' />
+    </svg>
+  )
+}
+
+export function IconPlaySta() {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      viewBox='0 0 31 24'
+      width={52}
+      height={32}
+      fill='none'
+      stroke='currentColor'
+    >
+      <path d='M18.646 5.077a6.515 6.515 0 01.061 1.286l.001-.015c0 2.344-.007 4.688.006 7.032.655.34 1.427.549 2.245.57h.007l.074.001a3.02 3.02 0 001.439-.362l-.016.008a3.117 3.117 0 001.143-1.096l.008-.014a4.846 4.846 0 00.616-1.677l.004-.029a9.26 9.26 0 00.108-2.112l.001.026a7.974 7.974 0 00-.692-3.171l.02.051a5.107 5.107 0 00-1.027-1.443l-.001-.001a6.73 6.73 0 00-1.298-1l-.031-.017a15.919 15.919 0 00-3.302-1.404l-.116-.03c-.75-.24-1.505-.47-2.262-.69-1.323-.375-2.652-.735-4.005-.987v22.393l5.065 1.607q.006-9.414 0-18.827l-.001-.06c0-.36.112-.693.304-.967l-.004.005a.623.623 0 01.6-.23l-.004-.001c.234.043.44.143.609.286l-.002-.002c.235.224.397.523.446.858l.001.008zM5.42 18.349c1.738-.621 3.475-1.249 5.216-1.866a2.867 2.867 0 00.008-.357v-2.589c-2.202.777-4.4 1.563-6.602 2.342-.537.196-1.082.37-1.608.594a9.67 9.67 0 00-1.795.943l.035-.022a1.633 1.633 0 00-.569.619l-.004.009a1.089 1.089 0 00-.03.854l-.003-.007c.139.322.354.589.624.785l.005.004c.47.338 1.02.601 1.613.756l.035.008c1.548.53 3.332.835 5.187.835.117 0 .234-.001.351-.004h-.017a17.322 17.322 0 002.876-.308l-.108.017c.014-.146.006-.293.008-.439v-2.194c-.744.266-1.487.537-2.23.806a5.187 5.187 0 01-.837.26l-.037.007a6.627 6.627 0 01-1.351.139h-.033a3.6 3.6 0 01-1.198-.204l.025.008a.605.605 0 01-.344-.282l-.002-.003a.33.33 0 01.109-.338h.001c.188-.165.413-.294.66-.372l.013-.004zm25.184-1.68a4.625 4.625 0 00-1.509-.831l-.033-.009c-.309-.098-.609-.22-.918-.314-1.432-.449-3.079-.708-4.786-.708h-.109.006c-.502.018-1.004.032-1.503.09-1.52.165-2.908.484-4.228.946l.132-.04v3.04c1.829-.64 3.654-1.287 5.482-1.928a5.911 5.911 0 011.844-.288h.052-.003l.06-.001c.412 0 .808.071 1.176.201l-.025-.008a.61.61 0 01.343.276l.002.003a.38.38 0 01-.178.406l-.002.001a3.468 3.468 0 01-.99.453l-.025.006q-3.85 1.374-7.699 2.745c-.054.01-.033.076-.038.114v2.834q5.06-1.819 10.121-3.635c.665-.218 1.21-.437 1.738-.685l-.092.039a4.526 4.526 0 001.359-.959l.001-.001c.198-.209.32-.492.32-.804V17.6v.001a1.34 1.34 0 00-.497-.929l-.003-.002z' />
+    </svg>
+  )
+}

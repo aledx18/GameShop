@@ -20,7 +20,9 @@ export default async function handler(
   try {
     const gameBySlug = await prismadb.game.findMany({
       where: {
-        slug
+        slug: {
+          startsWith: slug
+        }
       },
       include: {
         stores: true,
