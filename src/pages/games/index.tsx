@@ -11,6 +11,7 @@ import {
 } from '@/components/icons/icons'
 import { Game } from '@/components/interfaces'
 import Skeleton from '@/components/loading/Skeleton'
+import Pagination from '@/components/Pagination'
 import Search from '@/components/Search'
 import useStore from '@/components/store/zustand'
 import Head from 'next/head'
@@ -24,8 +25,12 @@ interface PlatformIconProps {
 }
 export default function Games() {
   const { isLoading } = useGetAllGames()
+  const [pagina, setPagina] = useState(1)
   const [view, setView] = useState(false)
   const { games } = useStore()
+
+  const porPagina = 15
+  const maximo = games.length / porPagina
 
   type PlatformIconComponent = FC<PlatformIconProps>
   const platformIcons: Record<string, PlatformIconComponent> = {
@@ -178,191 +183,129 @@ export default function Games() {
                       <Skeleton />
                     ) : (
                       <div className='flex flex-wrap'>
-                        {games?.slice(0, 21).map((game: Game) =>
-                          view ? (
-                            <div
-                              key={game.id}
-                              className='w-full p-1 md:w-1/3 lg:w-1/3'
-                            >
+                        {games
+                          ?.slice(
+                            (pagina - 1) * porPagina,
+                            (pagina - 1) * porPagina + porPagina
+                          )
+                          .map((game: Game) =>
+                            view ? (
                               <div
-                                style={{
-                                  backgroundImage: `url(${game.background_image})`
-                                }}
-                                className='flex h-[300px] w-full items-end overflow-hidden rounded-lg bg-cover bg-center object-cover object-center shadow-xl'
+                                key={game.id}
+                                className='w-full p-1 md:w-1/3 lg:w-1/3'
                               >
-                                <div className='w-full overflow-hidden rounded-b-lg bg-grisTwo/60 backdrop-blur-md '>
-                                  <Link href={`/games/${game.id}`}>
-                                    <div className='flex items-center gap-3'>
-                                      <h2 className='text-md p-2 font-medium text-white '>
+                                <div
+                                  style={{
+                                    backgroundImage: `url(${game.background_image})`
+                                  }}
+                                  className='flex h-[300px] w-full items-end overflow-hidden rounded-lg bg-cover bg-center object-cover object-center shadow-xl'
+                                >
+                                  <div className='w-full overflow-hidden rounded-b-lg bg-grisTwo/60 backdrop-blur-md '>
+                                    <Link href={`/games/${game.id}`}>
+                                      <div className='flex items-center gap-3'>
+                                        <h2 className='text-md p-2 font-medium text-white '>
+                                          {game.name}
+                                        </h2>
+                                        <div className='flex gap-1'>
+                                          {game.parent_platforms.map((pl) => {
+                                            const PlatformIcon =
+                                              platformIcons[pl.name]
+
+                                            if (PlatformIcon) {
+                                              return (
+                                                <div key={pl.id}>
+                                                  <PlatformIcon w='20' h='20' />
+                                                </div>
+                                              )
+                                            } else {
+                                              return null
+                                            }
+                                          })}
+                                        </div>
+                                      </div>
+                                    </Link>
+                                    <div className='flex gap-1 p-2'>
+                                      {game.genres.map((pl) => (
+                                        <h2
+                                          className='text-grisClaro'
+                                          key={pl.id}
+                                        >
+                                          {pl.name}
+                                        </h2>
+                                      ))}
+                                      <h3 className='font-medium text-white'>
+                                        $ {game.price}
+                                      </h3>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div
+                                key={game.id}
+                                className='my-2 w-full rounded-md bg-grisOne lg:w-full'
+                              >
+                                <div className='flex items-center justify-between'>
+                                  <div className='flex h-20 items-center rounded-md'>
+                                    <Image
+                                      className='h-20 w-auto rounded-l-md'
+                                      src={game.background_image}
+                                      width={100}
+                                      height={100}
+                                      alt={game.slug}
+                                      quality={40}
+                                      loading='lazy'
+                                    />
+
+                                    <Link href={`/games/${game.id}`}>
+                                      <h2 className='text-md pl-5 font-semibold text-white '>
                                         {game.name}
                                       </h2>
-                                      <div className='flex gap-1'>
-                                        {game.parent_platforms.map((pl) => {
-                                          const PlatformIcon =
-                                            platformIcons[pl.name]
+                                    </Link>
+                                  </div>
+                                  <div className='flex items-center gap-10'>
+                                    <div className='flex gap-1'>
+                                      {game.parent_platforms.map((pl) => {
+                                        const PlatformIcon =
+                                          platformIcons[pl.name]
 
-                                          if (PlatformIcon) {
-                                            return (
-                                              <div key={pl.id}>
-                                                <PlatformIcon w='20' h='20' />
-                                              </div>
-                                            )
-                                          } else {
-                                            return null
-                                          }
-                                        })}
-                                      </div>
+                                        if (PlatformIcon) {
+                                          return (
+                                            <div key={pl.id}>
+                                              <PlatformIcon w='20' h='20' />
+                                            </div>
+                                          )
+                                        } else {
+                                          return null
+                                        }
+                                      })}
                                     </div>
-                                  </Link>
-                                  <div className='flex gap-1 p-2'>
-                                    {game.genres.map((pl) => (
-                                      <h2
-                                        className='text-grisClaro'
-                                        key={pl.id}
-                                      >
-                                        {pl.name}
-                                      </h2>
-                                    ))}
-                                    <h3 className='font-medium text-white'>
+
+                                    <div className='flex gap-1'>
+                                      {game.genres.map((pl) => (
+                                        <h2 key={pl.id}>{pl.name}</h2>
+                                      ))}
+                                    </div>
+                                  </div>
+
+                                  <div className='px-6'>
+                                    <h3 className='font-bold text-white'>
                                       $ {game.price}
                                     </h3>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div
-                              key={game.id}
-                              className='my-2 w-full rounded-md bg-grisOne lg:w-full'
-                            >
-                              <div className='flex items-center justify-between'>
-                                <div className='flex h-20 items-center rounded-md'>
-                                  <Image
-                                    className='min-h-36 max-h-36 w-auto rounded-l-md pl-1'
-                                    src={game.background_image}
-                                    width={100}
-                                    height={100}
-                                    alt={game.slug}
-                                    quality={60}
-                                    loading='lazy'
-                                  />
-
-                                  <Link href={`/games/${game.id}`}>
-                                    <h2 className='text-md pl-5 font-semibold text-white '>
-                                      {game.name}
-                                    </h2>
-                                  </Link>
-                                </div>
-                                <div className='flex items-center gap-10'>
-                                  <div className='flex gap-1'>
-                                    {game.parent_platforms.map((pl) => {
-                                      const PlatformIcon =
-                                        platformIcons[pl.name]
-
-                                      if (PlatformIcon) {
-                                        return (
-                                          <div key={pl.id}>
-                                            <PlatformIcon w='20' h='20' />
-                                          </div>
-                                        )
-                                      } else {
-                                        return null
-                                      }
-                                    })}
-                                  </div>
-
-                                  <div className='flex gap-1'>
-                                    {game.genres.map((pl) => (
-                                      <h2 key={pl.id}>{pl.name}</h2>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                <div className='px-6'>
-                                  <h3 className='font-bold text-white'>
-                                    $ {game.price}
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        )}
+                            )
+                          )}
                       </div>
                     )}
                   </div>
                   {/* <!-- pagination --> */}
-                  <div className='flex justify-center py-10'>
-                    <a
-                      href='#'
-                      className='mx-1 flex cursor-not-allowed items-center justify-center rounded-md bg-white px-4 py-2 capitalize text-gray-500 rtl:-scale-x-100 dark:bg-gray-800 dark:text-gray-600'
-                    >
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='h-5 w-5'
-                        viewBox='0 0 20 20'
-                        fill='currentColor'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z'
-                          clipRule='evenodd'
-                        />
-                      </svg>
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 hidden transform rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blackOne hover:text-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blackOne dark:hover:text-gray-200 sm:inline'
-                    >
-                      1
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 hidden transform rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blue-500 hover:text-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-500 dark:hover:text-gray-200 sm:inline'
-                    >
-                      2
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 hidden transform rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blue-500 hover:text-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-500 dark:hover:text-gray-200 sm:inline'
-                    >
-                      ...
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 hidden transform rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blue-500 hover:text-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-500 dark:hover:text-gray-200 sm:inline'
-                    >
-                      9
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 hidden transform rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blue-500 hover:text-white dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-500 dark:hover:text-gray-200 sm:inline'
-                    >
-                      10
-                    </a>
-
-                    <a
-                      href='#'
-                      className='mx-1 flex transform items-center justify-center rounded-md bg-white px-4 py-2 text-gray-700 transition-colors duration-300 hover:bg-blue-500 hover:text-white rtl:-scale-x-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-blue-500 dark:hover:text-gray-200'
-                    >
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='h-5 w-5'
-                        viewBox='0 0 20 20'
-                        fill='currentColor'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                          clipRule='evenodd'
-                        />
-                      </svg>
-                    </a>
-                  </div>
+                  <Pagination
+                    setPagina={setPagina}
+                    maximo={maximo}
+                    pagina={pagina}
+                  />
                 </div>
               </div>
             </section>

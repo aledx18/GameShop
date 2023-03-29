@@ -18,7 +18,6 @@ export default function Home() {
   const [spinner, setSpinner] = useState(true)
   useGetAllGames()
   const { games } = useStore()
-  console.log(games)
 
   function handleLoad() {
     setSpinner(false)
