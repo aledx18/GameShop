@@ -96,7 +96,7 @@ export default function Detail({ data, video, additions }: DetailProps) {
           <div className='relative mt-80 flex h-full w-full flex-col rounded-2xl bg-blackFondo'>
             <div className='flex justify-around gap-2 rounded-2xl p-4'>
               <div className='flex flex-col'>
-                <div className='flex snap-x scroll-pl-2 gap-3 scroll-smooth'>
+                <div className='flex gap-3'>
                   {video.results.length > 0 && (
                     <video
                       src={video.results[0]?.data.max}

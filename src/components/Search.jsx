@@ -2,16 +2,19 @@
 import { useMemo, useRef, useState } from 'react'
 import { createAutocomplete } from '@algolia/autocomplete-core'
 import Link from 'next/link'
+import Image from 'next/image'
 
-const AutocompleteItem = ({ id, name, background_image, price }) => {
+const AutocompleteItem = ({ id, name, background_image }) => {
   return (
     <li>
       <Link href={`/games/${id}`}>
-        <div className='flex gap-4 p-4 hover:bg-blue-300'>
-          <img
+        <div className='flex items-center gap-4 p-4 hover:bg-grisOne'>
+          <Image
             src={background_image}
             alt={name}
-            className='h-12 w-12 object-contain'
+            width={50}
+            height={50}
+            className='rounded-sm'
           />
           <div>
             <h3 className='text-sm font-semibold'>{name}</h3>
@@ -62,21 +65,48 @@ export default function Search(props) {
   })
 
   return (
-    <form ref={formRef} className='mx-20 flex justify-center' {...formProps}>
-      <input
-        ref={inputRef}
-        className='relative appearance-none rounded-lg p-4 pl-10 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-grisClaro  dark:border-gray-600 dark:bg-grisTwo dark:text-white dark:placeholder-gray-200'
-        {...inputProps}
-      />
+    <form ref={formRef} className='mx-4 flex justify-center' {...formProps}>
+      <fieldset className='w-full space-y-1 dark:text-gray-100'>
+        <label for='Search' className='hidden'>
+          Search
+        </label>
+        <div className='relative'>
+          <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
+            <svg
+              aria-hidden='true'
+              class='h-5 w-5 text-gray-500 dark:text-gray-400'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+                d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+              />
+            </svg>
+          </span>
+          <input
+            ref={inputRef}
+            {...inputProps}
+            type='search'
+            name='Search'
+            placeholder='Search...'
+            className='w-32 rounded-md py-3 pl-10 text-sm focus:outline-none dark:bg-grisTwo dark:text-gray-100 focus:dark:bg-blackFondo sm:w-auto'
+          />
+        </div>
+      </fieldset>
+
       {autocompleteState.isOpen && (
         <div
-          className='absolute top-0 left-0 z-10 mt-16 overflow-hidden rounded-lg border border-gray-100 bg-white shadow-lg'
+          className='absolute z-10 mt-14 overflow-hidden rounded-lg border border-blackFondo bg-grisTwo shadow-lg'
           ref={panelRef}
           {...autocomplete.getPanelProps()}
         >
           {autocompleteState.collections.map((collection, index) => {
             const { items } = collection
-            console.log({ items })
             return (
               <section key={`section-${index}`}>
                 {items.length > 0 && (

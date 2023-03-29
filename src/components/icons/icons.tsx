@@ -261,11 +261,11 @@ export function IconImg() {
     </svg>
   )
 }
-interface IconDotsProps {
+interface IconHWProps {
   w: string
   h: string
 }
-export function IconDots(props: IconDotsProps) {
+export function IconDots(props: IconHWProps) {
   const { w, h } = props
   return (
     <svg
@@ -345,13 +345,14 @@ export function IconDots(props: IconDotsProps) {
   )
 }
 
-export function IconSteam() {
+export function IconSteam(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       className='icon icon-tabler icon-tabler-brand-steam'
-      width={55}
-      height={35}
+      width={w}
+      height={h}
       viewBox='0 0 24 24'
       strokeWidth='1.5'
       stroke='currentColor'
@@ -366,13 +367,14 @@ export function IconSteam() {
   )
 }
 
-export function IconAndroid() {
+export function IconAndroid(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       className='icon icon-tabler icon-tabler-brand-android'
-      width={55}
-      height={35}
+      width={w}
+      height={h}
       viewBox='0 0 24 24'
       strokeWidth='1.5'
       stroke='currentColor'
@@ -392,13 +394,14 @@ export function IconAndroid() {
   )
 }
 
-export function IconIos() {
+export function IconIos(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       className='icon icon-tabler icon-tabler-pizza'
-      width={55}
-      height={35}
+      width={w}
+      height={h}
       viewBox='0 0 24 24'
       strokeWidth='1.5'
       stroke='currentColor'
@@ -415,13 +418,14 @@ export function IconIos() {
   )
 }
 
-export function IconXbox() {
+export function IconXbox(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       className='icon icon-tabler icon-tabler-brand-xbox'
-      width={55}
-      height={35}
+      width={w}
+      height={h}
       viewBox='0 0 24 24'
       strokeWidth='1.5'
       stroke='currentColor'
@@ -437,13 +441,14 @@ export function IconXbox() {
   )
 }
 
-export function IconWindow() {
+export function IconWindow(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       className='icon icon-tabler icon-tabler-brand-windows'
-      width={55}
-      height={35}
+      width={w}
+      height={h}
       viewBox='0 0 24 24'
       strokeWidth='1.5'
       stroke='currentColor'
@@ -459,17 +464,42 @@ export function IconWindow() {
   )
 }
 
-export function IconPlaySta() {
+export function IconPlaySta(props: IconHWProps) {
+  const { w, h } = props
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 31 24'
-      width={52}
-      height={32}
+      width={w}
+      height={h}
       fill='none'
       stroke='currentColor'
     >
       <path d='M18.646 5.077a6.515 6.515 0 01.061 1.286l.001-.015c0 2.344-.007 4.688.006 7.032.655.34 1.427.549 2.245.57h.007l.074.001a3.02 3.02 0 001.439-.362l-.016.008a3.117 3.117 0 001.143-1.096l.008-.014a4.846 4.846 0 00.616-1.677l.004-.029a9.26 9.26 0 00.108-2.112l.001.026a7.974 7.974 0 00-.692-3.171l.02.051a5.107 5.107 0 00-1.027-1.443l-.001-.001a6.73 6.73 0 00-1.298-1l-.031-.017a15.919 15.919 0 00-3.302-1.404l-.116-.03c-.75-.24-1.505-.47-2.262-.69-1.323-.375-2.652-.735-4.005-.987v22.393l5.065 1.607q.006-9.414 0-18.827l-.001-.06c0-.36.112-.693.304-.967l-.004.005a.623.623 0 01.6-.23l-.004-.001c.234.043.44.143.609.286l-.002-.002c.235.224.397.523.446.858l.001.008zM5.42 18.349c1.738-.621 3.475-1.249 5.216-1.866a2.867 2.867 0 00.008-.357v-2.589c-2.202.777-4.4 1.563-6.602 2.342-.537.196-1.082.37-1.608.594a9.67 9.67 0 00-1.795.943l.035-.022a1.633 1.633 0 00-.569.619l-.004.009a1.089 1.089 0 00-.03.854l-.003-.007c.139.322.354.589.624.785l.005.004c.47.338 1.02.601 1.613.756l.035.008c1.548.53 3.332.835 5.187.835.117 0 .234-.001.351-.004h-.017a17.322 17.322 0 002.876-.308l-.108.017c.014-.146.006-.293.008-.439v-2.194c-.744.266-1.487.537-2.23.806a5.187 5.187 0 01-.837.26l-.037.007a6.627 6.627 0 01-1.351.139h-.033a3.6 3.6 0 01-1.198-.204l.025.008a.605.605 0 01-.344-.282l-.002-.003a.33.33 0 01.109-.338h.001c.188-.165.413-.294.66-.372l.013-.004zm25.184-1.68a4.625 4.625 0 00-1.509-.831l-.033-.009c-.309-.098-.609-.22-.918-.314-1.432-.449-3.079-.708-4.786-.708h-.109.006c-.502.018-1.004.032-1.503.09-1.52.165-2.908.484-4.228.946l.132-.04v3.04c1.829-.64 3.654-1.287 5.482-1.928a5.911 5.911 0 011.844-.288h.052-.003l.06-.001c.412 0 .808.071 1.176.201l-.025-.008a.61.61 0 01.343.276l.002.003a.38.38 0 01-.178.406l-.002.001a3.468 3.468 0 01-.99.453l-.025.006q-3.85 1.374-7.699 2.745c-.054.01-.033.076-.038.114v2.834q5.06-1.819 10.121-3.635c.665-.218 1.21-.437 1.738-.685l-.092.039a4.526 4.526 0 001.359-.959l.001-.001c.198-.209.32-.492.32-.804V17.6v.001a1.34 1.34 0 00-.497-.929l-.003-.002z' />
+    </svg>
+  )
+}
+
+export function IconNintendo(props: IconHWProps) {
+  const { w, h } = props
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      className='icon icon-tabler icon-tabler-device-nintendo'
+      width={w}
+      height={h}
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      fill='none'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+      <path d='M10 20v-16h-3a4 4 0 0 0 -4 4v8a4 4 0 0 0 4 4h3z' />
+      <path d='M14 20v-16h3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-3z' />
+      <circle cx='17.5' cy='15.5' r={1} fill='currentColor' />
+      <circle cx='6.5' cy='8.5' r={1} fill='currentColor' />
     </svg>
   )
 }
