@@ -1,4 +1,5 @@
 /* eslint-disable multiline-ternary */
+import Breadcrumb from '@/components/Breadcrumb'
 import useGetAllGames from '@/components/getAllgames'
 import {
   IconAndroid,
@@ -61,59 +62,7 @@ export default function Games() {
         <section className='body-font mt-52 text-gray-400'>
           <div className='px-1 sm:px-6 lg:px-0'>
             {/* <!-- Breadcrumb --> */}
-            <div className='my-2 flex items-center overflow-x-auto whitespace-nowrap'>
-              <Link href='/' className='text-gray-600 dark:text-gray-200'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-5 w-5'
-                  viewBox='0 0 20 20'
-                  fill='currentColor'
-                >
-                  <path d='M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z' />
-                </svg>
-              </Link>
-
-              <span className='mx-5 text-gray-500 rtl:-scale-x-100 dark:text-gray-300'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-5 w-5'
-                  viewBox='0 0 20 20'
-                  fill='currentColor'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                    clipRule='evenodd'
-                  />
-                </svg>
-              </span>
-              <a
-                href='#'
-                className='text-gray-600 hover:underline dark:text-gray-200'
-              >
-                Account
-              </a>
-              <span className='mx-5 text-gray-500 rtl:-scale-x-100 dark:text-gray-300'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  className='h-5 w-5'
-                  viewBox='0 0 20 20'
-                  fill='currentColor'
-                >
-                  <path
-                    fillRule='evenodd'
-                    d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                    clipRule='evenodd'
-                  />
-                </svg>
-              </span>
-              <a
-                href='#'
-                className='text-gray-600 hover:underline dark:text-gray-200'
-              >
-                Profile
-              </a>
-            </div>
+            <Breadcrumb />
             <div className='my-4 flex items-baseline justify-between border-b border-gray-200 pt-2 dark:border-gray-800'>
               {/* <!-- cantidad de juegos --> */}
               <div className='py-2'>

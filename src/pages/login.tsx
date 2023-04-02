@@ -82,7 +82,7 @@ export default function Login() {
       signup(data.name, data.email, data.password)
     }
   }
-  // bg-[#1b1b1d]
+
   return (
     <div className='flex min-h-full items-center justify-center py-14 px-4 min-[250px]:mt-20 sm:px-6 lg:px-8'>
       <div className='w-full max-w-sm space-y-8'>

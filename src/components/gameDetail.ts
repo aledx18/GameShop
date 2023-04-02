@@ -3,7 +3,8 @@ import { Add, Game, Video } from './interfaces'
 
 export async function fetchDetail(id: string) {
   const { data } = await axios.get<Game>(
-    `http://localhost:3000/api/getByID?id=${id}`
+    // cambiar por localhost/3000
+    `https://game-boost.vercel.app/api/getByID?id=${id}`
   )
   return data
 }

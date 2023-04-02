@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const UrlAxios = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  // cambiar por localhost/3000
+  baseURL: 'https://game-boost.vercel.app/api',
   headers: {}
 })
